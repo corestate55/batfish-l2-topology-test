@@ -35,3 +35,32 @@
        Vlan100                         Vlan200
        GRT                             VRF(user2)
 ```
+
+## Resources
+
+### commands
+
+```python
+from pybatfish.client.commands import *
+from pybatfish.question.question import load_questions
+from pybatfish.question import bfq
+load_questions()
+
+# sample1
+bf_init_snapshot('/path/to/batfish-l2-topology-test/sample1', name='sample1', overwrite=True)
+
+# sample2
+bf_init_snapshot('/path/to/batfish-l2-topology-test/sample2', name='sample2', overwrite=True)
+
+# layer3
+ans = bfq.edges(edgeType='layer3')
+ans.answer().frame()
+
+# layer1
+ans = bfq.edges(edgeType='layer1')
+ans.answer().frame()
+
+# select edges by host name
+df = ans.answer().frame()
+df.loc[list(map(lambda d: d.hostname=='host11', df.Interface.values))]
+```
