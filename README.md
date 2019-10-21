@@ -1,5 +1,9 @@
 # batfish-l2-topology-test
 
+## Blog
+
+* [BatfishでL2 Topologyを出せるかどうか調べてみる \- Qiita](https://qiita.com/corestate55/items/50ba0ae3e204d84fb03e)
+
 ## Network
 
 ### sample1
