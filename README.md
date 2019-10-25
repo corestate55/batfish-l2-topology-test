@@ -42,43 +42,67 @@
 
 ### sample3
 
-2-switch version of sample1.
+* 2-switch version of sample1.
+
 ```
-    host11    12           host21    22                   host13    14           host23    24
-     .101| .102|            .101| .102|                    .103| .104|            .103| .104|
-         |     |                |     |                        |     |                |     |
-   gi1/0/1     2          gi1/0/5     6                  gi1/0/3     4          gi1/0/7     8
-         |     |                |     |                        |     |                |     |
-       --+-----+--            --+-----+--                    --+-----+--            --+-----+--
-         |.1   192.168.1.0/24         192.168.2.0/24           |.1   192.168.1.0/24         192.168.2.0/24
-       Vlan100                                               Vlan100
-       GRT                                                   GRT
-       switch1                                               switch2
+    host11    12           host21    22               host13    14           host23    24
+     .101| .102|            .101| .102|                .103| .104|            .103| .104|
+         |     |                |     |                    |     |                |     |
+   gi1/0/1     2          gi1/0/5     6              gi1/0/3     4          gi1/0/7     8
+         |     |                |     |                    |     |                |     |
+       --+-----+--            --+-----+--                --+-----+--            --+-----+--
+         |.1   192.168.1.0/24         192.168.2.0/24       |.1   192.168.1.0/24         192.168.2.0/24
+       Vlan100                Vlan200                    Vlan100                Vlan200
+       GRT                                               GRT
+       switch1                                           switch2
 
   switch1              switch3
-  Po1 gi1/0/23 -- gi1/0/23 Po1
+  Po1 gi1/0/23 -- gi1/0/23 Po1 (trunk vlan100,200)
       gi1/0/24 -- gi1/0/24
 ```
 
 ### sample4
 
-2-switch version of sample2.
+* 2-switch version of sample2.
+
 ```
-    host11    12           host21    22                   host13    14           host23    24
-     .101| .102|            .101| .102|                    .103| .104|            .103| .104|
-         |     |                |     |                        |     |                |     |
-   gi1/0/1     2          gi1/0/5     6                  gi1/0/3     4          gi1/0/7     8
-         |     |                |     |                        |     |                |     |
-       --+-----+--            --+-----+--                    --+-----+--            --+-----+--
-         |.1   192.168.1.0/24         192.168.1.0/24           |.1   192.168.1.0/24         192.168.1.0/24
-       Vlan100                                               Vlan100
-       GRT                                                   GRT
-       switch1                                               switch2
+    host11    12           host21    22               host13    14           host23    24
+     .101| .102|            .101| .102|                .103| .104|            .103| .104|
+         |     |                |     |                    |     |                |     |
+   gi1/0/1     2          gi1/0/5     6              gi1/0/3     4          gi1/0/7     8
+         |     |                |     |                    |     |                |     |
+       --+-----+--            --+-----+--                --+-----+--            --+-----+--
+         |.1   192.168.1.0/24         192.168.1.0/24       |.1   192.168.1.0/24   |.1   192.168.1.0/24
+       Vlan100                Vlan200                    Vlan100                Vlan200
+       GRT                    VRF(user2)                 GRT                    VRF(user2)
+       switch1                                           switch2
 
   switch1              switch3
-  Po1 gi1/0/23 -- gi1/0/23 Po1
+  Po1 gi1/0/23 -- gi1/0/23 Po1 (trunk vlan100,200)
       gi1/0/24 -- gi1/0/24
 ```
+
+### sample5
+
+* A variant of sample4. (different vlan-id but same L2 segment)
+
+```
+    host11    12           host21    22               host13    14           host23    24
+     .101| .102|            .101| .102|                .103| .104|            .103| .104|
+         |     |                |     |                    |     |                |     |
+   gi1/0/1     2          gi1/0/5     6              gi1/0/3     4          gi1/0/7     8
+         |     |                |     |                    |     |                |     |
+       --+-----+--            --+-----+--                --+-----+--            --+-----+--
+         |.1   192.168.1.0/24         192.168.1.0/24       |.1   192.168.1.0/24   |.1   192.168.1.0/24
+       Vlan100                Vlan200                    Vlan200                Vlan300
+       GRT                    VRF(user2)                 GRT                    VRF(user2)
+       switch1                                           switch2
+
+  switch1                          switch3
+  vlan100 - gi1/0/23 -- gi1/0/23 - vlan200
+  vlan200 - gi1/0/24 -- gi1/0/24 - vlan300
+```
+
 
 ## Resources
 
@@ -92,9 +116,6 @@ load_questions()
 
 # sample1
 bf_init_snapshot('/path/to/batfish-l2-topology-test/sample1', name='sample1', overwrite=True)
-
-# sample2
-bf_init_snapshot('/path/to/batfish-l2-topology-test/sample2', name='sample2', overwrite=True)
 
 # layer3
 ans = bfq.edges(edgeType='layer3')
