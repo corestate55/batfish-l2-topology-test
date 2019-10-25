@@ -18,8 +18,14 @@ switch 1 provision ws-c3750g-24t
 system mtu routing 1500
 authentication mac-move permit
 ip subnet-zero
+ip routing
 no ip domain-lookup
 !
+!
+ip vrf user2
+ rd 1:2
+ route-target export 1:2
+ route-target import 1:2
 !
 !
 no setup express
@@ -122,6 +128,13 @@ interface Vlan100
  ip address 192.168.1.3 255.255.255.0
  standby 100 ip 192.168.1.1
  standby 100 priority 100
+ no ip proxy-arp
+!
+interface Vlan200
+ ip vrf forwarding user2
+ ip address 192.168.1.3 255.255.255.0
+ standby 200 ip 192.168.1.1
+ standby 200 priority 100
  no ip proxy-arp
 !
 ip classless
