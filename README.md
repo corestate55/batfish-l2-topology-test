@@ -3,6 +3,7 @@
 ## Blog
 
 * [BatfishでL2 Topologyを出せるかどうか調べてみる \- Qiita](https://qiita.com/corestate55/items/50ba0ae3e204d84fb03e)
+* [BatfishでL2 Topologyを出せるかどうか調べてみる \(2\) \- Qiita](https://qiita.com/corestate55/items/bfac369b3f4532e5acef)
 
 ## Network
 
@@ -106,17 +107,28 @@
 
 ## Resources
 
-### commands
+### Run batfish container
+
+```
+hagiwara@dev01:~$ cd batfish/batfish-l2-topology-test/
+hagiwara@dev01:~/batfish/batfish-l2-topology-test$ docker-compose up -d
+```
+
+### Run python with interactive mode
+
+```
+hagiwara@dev01:~$ cd batfish/batfish-l2-topology-test/
+hagiwara@dev01:~/batfish/batfish-l2-topology-test$ . ~/batfish/bf-venv/bin/activate
+(bf-venv) hagiwara@dev01:~/batfish/batfish-l2-topology-test$ python -i setup_bfq.py ./sample1/
+Successfully loaded 63 questions from remote
+/home/hagiwara/batfish/batfish-l2-topology-test/sample1
+...
+>>>
+```
+
+### Queries
 
 ```python
-from pybatfish.client.commands import *
-from pybatfish.question.question import load_questions
-from pybatfish.question import bfq
-load_questions()
-
-# sample1
-bf_init_snapshot('/path/to/batfish-l2-topology-test/sample1', name='sample1', overwrite=True)
-
 # layer3
 ans = bfq.edges(edgeType='layer3')
 ans.answer().frame()
