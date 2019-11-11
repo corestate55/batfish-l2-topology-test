@@ -3,6 +3,7 @@ from pybatfish.question.question import load_questions
 from pybatfish.question import bfq
 from sys import argv
 from os import path
+from pprint import pprint
 
 # call this script with `pthon -i` and query interactive.
 if __name__ == "__main__":
