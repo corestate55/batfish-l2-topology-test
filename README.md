@@ -2,8 +2,9 @@
 
 ## Blog
 
-* [BatfishでL2 Topologyを出せるかどうか調べてみる \- Qiita](https://qiita.com/corestate55/items/50ba0ae3e204d84fb03e)
+* [BatfishでL2 Topologyを出せるかどうか調べてみる \(1\) \- Qiita](https://qiita.com/corestate55/items/50ba0ae3e204d84fb03e)
 * [BatfishでL2 Topologyを出せるかどうか調べてみる \(2\) \- Qiita](https://qiita.com/corestate55/items/bfac369b3f4532e5acef)
+* [NW機器のコンフィグから力業でL2トポロジを作る \- Qiita](https://qiita.com/corestate55/items/8fa006d1e30f49da36f6)
 
 ## Network
 
