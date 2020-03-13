@@ -1,12 +1,17 @@
-# batfish-l2-topology-test
+# batfish-test-topology
 
 ## Blog
 
+### L2 topology test
 * [BatfishでL2 Topologyを出せるかどうか調べてみる \(1\) \- Qiita](https://qiita.com/corestate55/items/50ba0ae3e204d84fb03e)
 * [BatfishでL2 Topologyを出せるかどうか調べてみる \(2\) \- Qiita](https://qiita.com/corestate55/items/bfac369b3f4532e5acef)
 * [NW機器のコンフィグから力業でL2トポロジを作る \- Qiita](https://qiita.com/corestate55/items/8fa006d1e30f49da36f6)
 
-## Network
+### L3 topology test
+- (TBA)
+
+
+## L2 topology
 
 ### sample1
 
@@ -111,18 +116,18 @@
 ### Run batfish container
 
 ```
-hagiwara@dev01:~$ cd batfish/batfish-l2-topology-test/
-hagiwara@dev01:~/batfish/batfish-l2-topology-test$ docker-compose up -d
+hagiwara@dev01:~$ cd batfish/batfish-test-topology/
+hagiwara@dev01:~/batfish/batfish-test-topology$ docker-compose up -d
 ```
 
 ### Run python with interactive mode
 
 ```
-hagiwara@dev01:~$ cd batfish/batfish-l2-topology-test/
-hagiwara@dev01:~/batfish/batfish-l2-topology-test$ . ~/batfish/bf-venv/bin/activate
-(bf-venv) hagiwara@dev01:~/batfish/batfish-l2-topology-test$ python -i setup_bfq.py ./sample1/
+hagiwara@dev01:~$ cd batfish/batfish-test-topology/
+hagiwara@dev01:~/batfish/batfish-test-topology$ . ~/batfish/bf-venv/bin/activate
+(bf-venv) hagiwara@dev01:~/batfish/batfish-test-topology$ python -i setup_bfq.py ./sample1/
 Successfully loaded 63 questions from remote
-/home/hagiwara/batfish/batfish-l2-topology-test/sample1
+/home/hagiwara/batfish/batfish-test-topology/sample1
 ...
 >>>
 ```
