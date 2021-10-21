@@ -1,6 +1,7 @@
 from pybatfish.client.commands import *
 from pybatfish.question.question import load_questions
 from pybatfish.question import bfq
+from pybatfish.datamodel.flow import *
 from sys import argv
 from os import path
 from pprint import pprint
