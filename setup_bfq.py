@@ -1,10 +1,7 @@
 from pybatfish.client.commands import *
 from pybatfish.question.question import load_questions
 from pybatfish.question import bfq
-<<<<<<< HEAD
-=======
 from pybatfish.datamodel.flow import *
->>>>>>> develop
 from sys import argv
 from os import path
 from pprint import pprint
