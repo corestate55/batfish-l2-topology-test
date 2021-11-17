@@ -132,11 +132,40 @@
      Fa1/0                                             Fa1/1
      GRT           router1
 
-  switch1              switch3
-  Po1 gi1/0/23 -- gi1/0/23 Po1 (trunk vlan100,200)
-      gi1/0/24 -- gi1/0/24
+                      switch1              switch2
+  (trunk vlan 100,200) Po1 gi1/0/23 -- gi1/0/23 Po1 (trunk vlan100,200)
+                           gi1/0/24 -- gi1/0/24
 ```
 
+### L2 sample3-modified (Abnormal case)
+
+```text
+
+                                       host31                                           host33
+                                            | .101                                           | .103
+                                  ----------+--                                    ----------+--
+                           192.168.201.0/24 |                               192.168.201.0/24 |
+                                      Vlan201                                          Vlan201
+                                            |.2                                              |.3
+    host11    12           host21    22   testvrf     host13    14           host23    24  testvrf
+     .101| .102|            .101| .102|   .2|          .103| .104|            .103| .104|  .3|
+         |     |                |     |     |              |     |                |     |    |
+   gi1/0/1     2          gi1/0/5     6   Vlan200    gi1/0/3     4          gi1/0/7     8  Vlan200
+         |     |                |     |     |              |     |                |     |    |
+       --+-----+--            --+-----+-----+--          --+-----+--            --+-----+-----+--
+         |.1   192.168.1.0/24         192.168.2.0/24       |.1   192.168.1.0/24         192.168.2.0/24
+       Vlan100                Vlan200                    Vlan100                Vlan200
+       GRT         switch1                               GRT         switch2
+         |.2                                               |.2
+         |     10.0.1.0/24                                 |     10.0.2.0/24
+         |.1                                               |.1
+     Fa1/0                                             Fa1/1
+     GRT           router1
+
+                           switch1              switch2
+  (trunk vlan 100,200-201) Po1 gi1/0/23 -- gi1/0/23 Po1 (trunk vlan100,200)
+                               gi1/0/24 -- gi1/0/24
+```
 
 
 ## Resources
