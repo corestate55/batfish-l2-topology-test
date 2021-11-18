@@ -212,12 +212,32 @@
     },
     {
       "node1": {
+        "hostname": "switch1",
+        "interfaceName": "GigabitEthernet1/0/11"
+      },
+      "node2": {
+        "hostname": "router1",
+        "interfaceName": "FastEthernet1/0"
+      }
+    },
+    {
+      "node1": {
         "hostname": "router1",
         "interfaceName": "FastEthernet1/1"
       },
       "node2": {
         "hostname": "switch2",
         "interfaceName": "GigabitEthernet1/0/11"
+      }
+    },
+    {
+      "node1": {
+        "hostname": "switch2",
+        "interfaceName": "GigabitEthernet1/0/11"
+      },
+      "node2": {
+        "hostname": "router1",
+        "interfaceName": "FastEthernet1/1"
       }
     },
     {
