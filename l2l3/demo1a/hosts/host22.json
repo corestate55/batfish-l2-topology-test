@@ -3,7 +3,7 @@
 	"hostInterfaces" : {
 		"eth0" : {
 			"name": "eth0",
-			"prefix" : "192.168.2.102/24",
+			"prefix" : "192.168.2.102/25",
 			"gateway" : "192.168.2.1"
 		}
 	}
